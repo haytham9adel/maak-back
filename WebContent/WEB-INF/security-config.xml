@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<http auto-config="true">
+		<intercept-url pattern="/login" access="ROLE_USER" />
+		<session-management invalid-session-url="/login.html" session-fixation-protection="newSession" >
+		   <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+		</session-management>
+		<logout logout-success-url="/login.html" delete-cookies="JSESSIONID" />
+	</http>
+	
+	<authentication-manager>
+      <authentication-provider>
+	  <password-encoder hash="sha"/>
+	  <user-service>
+	    <user name="concretepage" password="0733824cc1549ce36139e8c790a9344d1e385cd2" authorities="ROLE_USER" />
+	  </user-service>
+      </authentication-provider>
+   </authentication-manager>
+   
+</beans:beans>

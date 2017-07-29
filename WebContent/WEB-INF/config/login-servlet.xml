@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation=
+"http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        ">
+        
+        
+<mvc:annotation-driven />
+
+	<context:property-placeholder location="classpath:resources/database.properties" />
+	<context:component-scan base-package="com.trackingbus" />
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
+	<tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
+	
+	
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ar" />
+	</bean>
+
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="language" />
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" >
+		<property name="interceptors">
+		   <list>
+			<ref bean="localeChangeInterceptor" />
+		   </list>
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${database.driver}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.user}" />
+		<property name="password" value="${database.password}" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.trackingbus.model.LoginModel</value>
+				<value>com.trackingbus.model.SchoolModel</value>
+				<value>com.trackingbus.model.CountryModel</value>
+				<value>com.trackingbus.model.StateModel</value>
+				<value>com.trackingbus.model.CityModel</value>
+				<value>com.trackingbus.model.StudentModel</value>
+				<value>com.trackingbus.model.VehicleModel</value>
+				<value>com.trackingbus.model.StaffModel</value>
+				<value>com.trackingbus.model.DepartmentModel</value>
+				<value>com.trackingbus.model.DriverModel</value>
+				<value>com.trackingbus.model.RouteModel</value>
+				<value>com.trackingbus.model.RouteLatLngModel</value>
+				<value>com.trackingbus.model.HolidayModel</value>
+				<value>com.trackingbus.model.AttendanceModel</value>
+				<value>com.trackingbus.model.StudentTrackingModel</value>
+				<value>com.trackingbus.model.DriverTrackModel</value>
+				<value>com.trackingbus.model.SchoolMessage</value>
+				<value>com.trackingbus.model.PageContentModel</value>
+				<value>com.trackingbus.model.ParentMessage</value>
+				<value>com.trackingbus.model.NotificationModel</value>
+				<value>com.trackingbus.model.DriverMessage</value>
+				<value>com.trackingbus.model.SchoolClassesModel</value>
+				<value>com.trackingbus.model.DriverAttendanceModel</value>
+				<value>com.trackingbus.model.VehicleDocModel</value>
+				<value>com.trackingbus.model.DriverDocModel</value>
+				<value>com.trackingbus.model.NationlityModel</value>
+				<value>com.trackingbus.model.HolidayDeletedModel</value>
+				<value>com.trackingbus.model.TypingModel</value>
+				<value>com.trackingbus.model.StudentAbsentModel</value>
+				<value>com.trackingbus.model.relationshipModel</value>
+				<value>com.trackingbus.model.SliderModel</value>
+				<value>com.trackingbus.model.PageModel</value>
+				<value>com.trackingbus.model.FeaturesModel</value>
+				<value>com.trackingbus.model.FaqModel</value>
+				<value>com.trackingbus.model.ContactDetailModel</value>
+				<value>com.trackingbus.model.SubscriberModel</value>
+				<value>com.trackingbus.model.AdminSetupModel</value>
+				<value>com.trackingbus.model.EmailTemplateModel</value>
+				<value>com.trackingbus.model.CategoryContactModel</value>
+				<value>com.trackingbus.model.ContactContentModel</value>
+				
+		    </list>
+			
+			
+		</property>
+		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>	
+							
+			</props>
+		</property>
+	</bean>
+
+		<bean id="hibernateTransactionManager"
+			class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+		 
+	<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ 
+         <!-- setting maximum upload size -->
+       <!--  <property name="maxUploadSize" value="100000" /> -->
+ 
+    </bean>
+ 
+<!--   <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <util:list>
+                <bean id="stringHttpMessageConverter"
+                      class="resources.ConfigurableStringHttpMessageConverter">
+                    <constructor-arg value="text/plain;charset=UTF-8"/>
+                </bean>
+            </util:list>
+        </property>
+    </bean> 
+   -->
+   <bean class = "org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    <property name="messageConverters">
+        <array>
+            <bean class = "org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes" value = "text/plain;charset=UTF-8" />
+            </bean>
+        </array>
+    </property>
+</bean>
+  
+<mvc:interceptors>
+		<!-- <bean class="com.trackingbus.controller.GetNotification" /> -->
+		 <mvc:interceptor>
+			<mvc:mapping path="/admin/*" />
+			<bean class="com.trackingbus.controller.GetNotification" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/school/*" />
+			<bean class="com.trackingbus.controller.GetNotification" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<bean class="com.trackingbus.controller.GetNotification" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/parent/*" />
+			<bean class="com.trackingbus.controller.GetNotification" />
+		</mvc:interceptor>
+</mvc:interceptors>
+	
+	
+	
+ 
+</beans>

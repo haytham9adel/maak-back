@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlrewrite>
+<rule>
+               <name>Domain Name Check for example.com</name>
+                <condition name="host" operator="equal">www.m3aak.net</condition>
+               <from>^(.*)$</from>
+               <to type="redirect">http://m3aak.net$1</to>
+      </rule>
+</urlrewrite>
+ 

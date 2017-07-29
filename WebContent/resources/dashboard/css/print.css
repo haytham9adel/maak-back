@@ -1,0 +1,65 @@
+@CHARSET "ISO-8859-1";
+body{-webkit-print-color-adjust:exact;display:inline;}
+img{display:inline;max-width:80px;}
+/* media:screen */
+@media screen {
+.printimg img{
+    visibility: visible;-webkit-print-color-adjust:exact;display:inline;
+}
+}
+/* media:print */
+@media print {
+.printimg img{
+    visibility: visible;
+}
+
+.card_visit {
+    border: 1px solid #ccc;
+	background:#eee;
+	position:relative;
+	overflow: hidden;
+}
+.pad-0{padding:0;}
+.sc_logo_name {
+    background: #f3be4e;
+    padding: 5px 0;    color: #fff;
+}
+.profile_img {
+    width: 30%;    padding: 3px;
+}
+.profile_img.logo {
+    float: right;
+    width: 54px;
+}
+.detail-card {
+    padding: 0px 0px;
+}
+.student_card_detail {
+
+}
+.student_card_detail p {
+    font-size: 13px;
+    line-height: 12px;
+    overflow: hidden;
+    margin: 0;
+}
+.student_id_qr {
+    width: 70px;
+    height: 70px;
+	    margin-top: 14px;    position: absolute;
+    right: 0;
+}
+.student_card_detail p span {
+    margin-bottom: 7px;
+    float: left;
+    margin-right: 10px;
+}
+
+.student_card_detail {
+       padding: 5px;
+}
+
+.student_card_detail p span:first-child {
+    font-weight:bold;
+}
+}

@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/views/SuperAdmin/add_driver.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/SuperAdmin/add_school.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/SuperAdmin/add_student.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/SuperAdmin/edit_student.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/SuperAdmin/header.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/home/about.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/home/faq.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/home/feature.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/home/header.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/home/homepage.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/parent/header.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/school/add_student.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/school/edit_student.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/school/header.jsp=UTF-8
+encoding//src/resources/Sms_api.java=UTF-8
